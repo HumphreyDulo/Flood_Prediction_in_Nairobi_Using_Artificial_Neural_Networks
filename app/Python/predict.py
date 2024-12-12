@@ -4,11 +4,15 @@ import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 import joblib
 
+# Absolute paths to the model and scaler
+model_path = r"C:\Users\User\Flood_Prediction_in_Nairobi_Using_Artificial_Neural_Networks\app\Python\flood_model.keras"
+scaler_path = r"C:\Users\User\Flood_Prediction_in_Nairobi_Using_Artificial_Neural_Networks\app\Python\scaler.pkl"
+
 # Load the trained model
-model = tf.keras.models.load_model("flood_model.keras")
+model = tf.keras.models.load_model(model_path)
 
 # Load the pre-fitted scaler
-scaler = joblib.load("scaler.pkl")
+scaler = joblib.load(scaler_path)
 
 # Get the features passed as arguments from the command line
 features = list(map(float, sys.argv[1].split(',')))

@@ -40,7 +40,6 @@ class FloodPredictionController extends Controller
             'wind_speed' => $weatherData['wind']['speed'],  // Wind speed (m/s)
             'wind_gust' => isset($weatherData['wind']['gust']) ? $weatherData['wind']['gust'] : 0,  // Wind gust (m/s)
             'cloudiness' => $weatherData['clouds']['all'],  // Cloud cover (%)
-            // Add more weather-related features as needed
         ];
 
         // Log the extracted features for debugging
@@ -49,8 +48,10 @@ class FloodPredictionController extends Controller
         // Convert the features array to a comma-separated string
         $featuresStr = implode(',', $features);
 
-        // Path to your virtual environment's python executable and the script
-        $pythonPath = base_path("C:\Python312\python.exe");  // Adjust path based on your virtualenv location
+        // Path to your Python executable (directly specify the absolute path)
+        $pythonPath = "C:\\Python312\\python.exe";  // Adjust path based on your Python installation
+
+        // Path to your Python script (using base_path for Laravel project)
         $scriptPath = base_path('app/Python/predict.py'); // Path to your Python script
 
         // Log the full Python command being executed
@@ -71,3 +72,4 @@ class FloodPredictionController extends Controller
         ]);
     }
 }
+
